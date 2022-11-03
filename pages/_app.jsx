@@ -1,24 +1,18 @@
-import CarContextWrapper from "context/CarContext";
-import NavContextWrapper from "context/NavContext";
-import { ThemeProvider } from "styled-components";
-import Head from "next/head";
-import { DefaultSeo } from "next-seo";
+import CarContextWrapper from 'context/CarContext';
+import NavContextWrapper from 'context/NavContext';
+import { ThemeProvider } from 'styled-components';
+import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 
-import { DEFAULT_SEO } from "constants/defaultSEO";
+import { DEFAULT_SEO } from 'constants/defaultSEO';
 
-import SEO from "components/common/SEO";
+import SEO from 'components/common/SEO';
 
-import GlobalStyle from "styles/GlobalStyle";
-import Theme from "styles/Theme";
+import GlobalStyle from 'styles/GlobalStyle';
+import Theme from 'styles/Theme';
+import isEmptyObj from 'utils/isEmptyObj';
 
 function MyApp({ Component, pageProps }) {
-  const isEmptyObj = (obj) => {
-    if (obj.constructor === Object && Object.keys(obj).length === 0) {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <>
       <Head>
