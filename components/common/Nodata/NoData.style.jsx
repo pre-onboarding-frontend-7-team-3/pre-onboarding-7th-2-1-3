@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
+  height: 800px;
 
   font-size: 17px;
   font-weight: 700;
