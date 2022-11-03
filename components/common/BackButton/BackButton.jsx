@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import Icon from "../Icon";
-import { BackButtonWrapper } from "./BackButton.style";
+import Link from 'next/link';
+import Icon from '../Icon';
+import { BackButtonWrapper } from './BackButton.style';
 
 function BackButton() {
   return (
-    <Link to="/">
+    <Link href="/">
       <BackButtonWrapper>
         <Icon icon="BackButton" />
       </BackButtonWrapper>

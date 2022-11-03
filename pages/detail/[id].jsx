@@ -1,11 +1,12 @@
-import Header from "components/Header";
-import CarDetail from "components/CarDetail";
-import { CarContext } from "context/CarContext";
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import Header from 'components/Header';
+import CarDetail from 'components/CarDetail';
+import { CarContext } from 'context/CarContext';
+import { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const Detail = () => {
-  const { id } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
   const {
     carState: { carList, selectedCar },
     findCars,
