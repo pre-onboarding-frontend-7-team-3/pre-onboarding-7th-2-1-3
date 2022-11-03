@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
 } from 'react';
-import { getCars } from 'apis';
+import { getCars } from 'lib';
 import { carReducer } from 'helpers/useCarReducer';
 import { CAR_ACTION_TYPES } from 'constants/actionType';
 
@@ -47,11 +47,3 @@ export default function CarContextWrapper({ children }) {
     </CarContext.Provider>
   );
 }
-
-export const useCarState = () => {
-  const state = useContext(CarContext);
-  if (!state) {
-    throw new Error('Error finding CarContext Provider');
-  }
-  return state;
-};
