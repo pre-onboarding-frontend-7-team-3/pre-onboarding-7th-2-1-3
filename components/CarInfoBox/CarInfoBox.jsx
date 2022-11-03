@@ -9,7 +9,7 @@ function CarInfoBox({
   attribute: { brand, name, fuelType, segment, imageUrl },
   amount,
   id,
-  startDate,
+  createdAt,
 }) {
   return (
     <Style.Wrapper>
@@ -32,9 +32,8 @@ function CarInfoBox({
           <Style.ImageWrapper url={imageUrl}>
             {/* <img width="100%" alt={brand} src={imageUrl} /> */}
 
-            {isNew(startDate) && (
+            {isNew(createdAt) && (
               <Style.ButtonWrapper>
-                (
                 <Button
                   width="52px"
                   height="22px"
@@ -46,7 +45,6 @@ function CarInfoBox({
                 >
                   신규
                 </Button>
-                )
               </Style.ButtonWrapper>
             )}
           </Style.ImageWrapper>
