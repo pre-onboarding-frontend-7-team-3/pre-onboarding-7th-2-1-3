@@ -25,7 +25,7 @@
 ```jsx
 $ git clone https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3.git
 $ npm install
-$ npm start
+$ npm run dev
 ```
 
 </br>
@@ -40,35 +40,36 @@ $ npm start
 
 </br>
     
-2. husky를 이용해 commit전 lint 자동 검사
-
 ## ☑️ Best Practice 및 채택 근거
 
-### 1. barrel 방식 / ~~~절대경로 지정  // 영훈님
-- 개발 효율성과 생산성 향상
-- barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
-- jsconfig.json에 baseUrl을 지정하여 import시 경로의 가독성 높이기
+### 1. barrel 방식의 폴더구조
+- 각 컴포넌트에 해당되는 폴더를 만들고 그 안에 index.js를 만듭니다. index.js안에 `export { default } from './Component'` 라고 해두면 VS CODE상에서 해당 파일을 링크하여 열었을때 이름이 `Component.jsx` 라고 뜹니다. `index.jsx` 라는 이름보다 가독성이 좋습니다.
+
+![header barrel](https://user-images.githubusercontent.com/65995664/199849583-813d467e-822f-465a-ac86-5b4d3e4c92cd.gif)
+
 
 <br/>
 
 ### 2. useReducer / useContext Hook
 - 본 프로젝트에서 상태 관리 라이브러리의 제한은 없었으나 내장 API를 사용해서 구현하자는 공통된 의견이 있어 useReducer와 useContext 훅을 채택했습니다. 컴포넌트 단에서 여러 상태를 만들기 보다 컨포넌트 간 상태 공유가 가능하고 비동기 요청에 대한 과정과 결과 상태를 한 영역에서 관리할 수 있는 장점에 의견을 모았습니다. 더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context prodiver 컴포넌트로 로직을 분리해서 관리했습니다.
-> 참고 폴더 [src/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/context)
+> 참고 폴더 [/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/main/context)
 >
 
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/edbcce232e4fa90438532c6ff59a991e1c6a74ab/src/helpers/useCarReducer.js#L1-L16
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/helpers/useCarReducer.js#L1
 
 <br/>
 
 ### 3. Context API를 활용한 UI에 대한 정보와 데이터 
   - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로 가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
 
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/b084a35634c7679f0693aa6a451444e47d1cf427/src/context/NavContext.js#L1-L24
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/context/NavContext.js#L16
 
 <br/>
 
-### 4. SEO - 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출
-- 초기 순수 CRA환경에서 벽을 맞이했습니다. react-hook을 통한 og태그 관련 DOM조작과 react-snap 라이브러리를 통한 pre-render를 사용해보았습니다. 
+### 4. next.js 마이그레이션
+## 순수 REACT
+SEO를 통한 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출하려 했습니다.
+그러나, 초기 순수 CRA환경에서는 벽을 맞이했었습니다. react-hook을 통한 og태그 관련 DOM조작과 react-snap 라이브러리를 통한 pre-render를 사용해보았는데요,
 비구글 검색엔진에 대하여 SEO crawlling은 가능하게 하였지만, 두 방법 모두 Open Graph에 동적 대응할 수 없었습니다. 
 추가 구현사항을 구현하기 위해서는 next.js로의 마이그레이션이 필요하다고 판단했습니다.
 
@@ -87,11 +88,13 @@ export const useMetaTegs = (TitleofMetaTegs) => {
 
 <br/>
 
-### 5. next.js 마이그레이션
+## NEXT-JS
 - Server Side Rendering, Automatic Routing, Automatic Code Splitting등의 장점을 가진 Next.js. 
-SEO 관련 사항 중 Open Graph를 구현하기위해 마이그레이션을 진행했다.
-- 찾아보니 _App.js에서 SEO처리를 함을 확인했다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생한다. 
-이를 해결하기 위해 getStaticProps로 _App.js에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였다.
+SEO 관련 사항 중 Open Graph를 구현하기위해 마이그레이션을 진행했습니다.
+- 찾아보니 _App.js에서 SEO처리를 함을 확인했습니다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생합니다. 
+이를 해결하기 위해 getStaticProps로 _App.js에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였.
+
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/pages/detail/%5Bid%5D.jsx#L38
 
 ```jsx
 // [id].jsx
@@ -119,6 +122,8 @@ export async function getStaticProps(context) {
   };
 }
 ```
+
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/pages/_app.jsx#L14
 
 ```jsx
 // _App.jsx
@@ -150,17 +155,9 @@ export default MyApp;
 
 <br/>
 
-### 6. 반응형 모바일 웹
-- 모바일 디바이스의 크기(450px~360px)에 따라 UI가 출력되도록 구현하고자 react-responsive 라이브러리를 사용했습니다. 개발 기간이 길지 않아 개발 생태계가 잘 형성돼있고 어려움 없이 도입할 수 있다는 이유를 근거로 채택했습니다.
-
-  https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/b084a35634c7679f0693aa6a451444e47d1cf427/src/App.jsx#L1-L35
-
-<br/>
-
-### 7. 상수 데이터의 활용
-  - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/b084a35634c7679f0693aa6a451444e47d1cf427/src/constants) 디렉토리에서 모두 관리 했습니다.
+### 6. 상수 데이터의 활용
+  - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/main/constants) 디렉토리에서 모두 관리 했습니다.
   
-  https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/472394ea9883a7f3ed198bbb9e12c7c57fa3f6e9/src/components/CarDetail/CarDetail.jsx#L1-L49
   
 </br>
 
@@ -178,6 +175,7 @@ export default MyApp;
 | test     | 테스트 코드 추가                            |
 | chore    | 환경설정, 빌드 업무, 패키지 매니저 설정등.. |
 | hotfix   | 치명적이거나 급한 버그 수정                 |
+| remove   | 사용하지 않는 변수, 파일 etc 삭제           |
 
 - [ ] branch 컨벤션
 
@@ -255,3 +253,4 @@ export default MyApp;
 | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/78708082?s=96&v=4" alt="moonkorea00" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/28257740?s=96&v=4" alt="dltkdals224" with="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/86206374?s=96&v=4" alt="365supprot" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/110365677?v=4" alt="suzz-in" width="100" height="100"> |
 | [moonkorea00](https://github.com/moonkorea00)                                                                    | [dltkdals224](https://github.com/dltkdals224)                                                                   | [365support](https://github.com/365support)                                                                     | [suzz-in](https://github.com/suzz-in)                                                                    |
+
