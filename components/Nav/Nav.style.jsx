@@ -1,14 +1,20 @@
-import styled from "styled-components";
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+`;
 
 const NavWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  width: 92%;
-  gap: 10px;
+  max-width: 450px;
 
-  padding: 2vw 3vw;
+  padding: 6px 0;
+  gap: 10px;
 
   border-bottom: 1px solid ${(props) => props.theme.BLACK};
 
@@ -25,8 +31,9 @@ const NavItemStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
   white-space: nowrap;
+
+  z-index: 10;
 `;
 
 const NavButton = styled.button`
@@ -39,6 +46,7 @@ const NavButton = styled.button`
 
   font-size: 14px;
   font-weight: 700;
+  line-height: 17px;
 
   ${({ theme, selectedCategory, idx }) =>
     css`
@@ -49,4 +57,4 @@ const NavButton = styled.button`
   cursor: pointer;
 `;
 
-export { NavWrapper, NavItemStyle, NavButton };
+export { Wrapper, NavWrapper, NavItemStyle, NavButton };
