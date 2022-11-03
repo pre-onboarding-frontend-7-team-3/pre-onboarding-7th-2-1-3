@@ -1,9 +1,9 @@
-import * as Style from "./CarInfoBox.style";
-import Link from "next/link";
-import Button from "components/common/Button";
-import isNew from "utils/isNew";
-import { memo } from "react";
-import { carInfoConverter } from "utils/carInfoConverter";
+import * as Style from './CarInfoBox.style';
+import Link from 'next/link';
+import Button from 'components/common/Button';
+import isNew from 'utils/isNew';
+import { memo } from 'react';
+import formatAttribute from 'utils/formatAttribute';
 
 function CarInfoBox({
   attribute: { brand, name, fuelType, segment, imageUrl },
@@ -22,7 +22,7 @@ function CarInfoBox({
             </Style.TextWrapper>
             <Style.TextWrapper>
               <Style.SubAttribute>
-                {carInfoConverter[fuelType]} / {carInfoConverter[segment]}
+                {formatAttribute(fuelType)} / {formatAttribute(segment)}
               </Style.SubAttribute>
               <Style.SubAttribute>
                 월 {amount.toLocaleString()}원 부터
@@ -38,8 +38,8 @@ function CarInfoBox({
                   borderRadius="42px"
                   fontSize="12px"
                   fontWeight="700"
-                  color={(props) => props.theme.WHITE}
-                  backgroundColor={(props) => props.theme.BLUE}
+                  color={props => props.theme.WHITE}
+                  backgroundColor={props => props.theme.BLUE}
                 >
                   신규
                 </Button>
