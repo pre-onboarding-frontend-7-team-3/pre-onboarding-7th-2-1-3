@@ -8,6 +8,7 @@ export const Wrapper = styled.article`
   width: 98%;
   max-width: 450px;
   height: 120px;
+  min-height: 120px;
 
   border-bottom: 1px solid black;
   background-color: ${(props) => props.theme.WHITE};
@@ -37,8 +38,6 @@ export const TextWrapper = styled.div`
   align-items: center;
 
   width: 170px;
-
-  gap: 6px;
 `;
 
 export const MainAttribute = styled.div`
@@ -50,6 +49,7 @@ export const MainAttribute = styled.div`
 
   font-size: 14px;
   font-weight: 700;
+  line-height: 17px;
 `;
 
 export const SubAttribute = styled.div`
@@ -61,16 +61,16 @@ export const SubAttribute = styled.div`
 
   font-size: 12px;
   font-weight: 500;
+  line-height: 15px;
 `;
 
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  /* margin-right: -3vw; */
-  /* border: 1px solid black; */
-  width: 160px;
-  height: 100%;
-  height: 90px;
+
+  width: 152px;
+  height: 80px;
+
   background-image: ${(props) => `url(${props.url})`};
   background-repeat: no-repeat;
   background-position: center;

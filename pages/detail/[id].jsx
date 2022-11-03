@@ -1,8 +1,10 @@
-import Header from "components/Header";
-import CarDetail from "components/CarDetail";
-import { CarContext } from "context/CarContext";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+
+import { CarContext } from "context/CarContext";
+
+import Header from "components/Header";
+import CarDetail from "components/CarDetail";
 
 const Detail = () => {
   const router = useRouter();
