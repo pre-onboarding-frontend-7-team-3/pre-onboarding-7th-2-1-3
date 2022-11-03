@@ -74,6 +74,7 @@ SEO를 통한 카카오톡, 페이스북에 공유 시 아래의 내용이 미�
 비구글 검색엔진에 대하여 SEO crawlling은 가능하게 하였지만, 두 방법 모두 Open Graph에 동적 대응할 수 없었습니다. 
 추가 구현사항을 구현하기 위해서는 next.js로의 마이그레이션이 필요하다고 판단했습니다.
 
+
 ```jsx
 export const useMetaTegs = (TitleofMetaTegs) => {
   const [metaTegs, setMetaTegs] = useState(TitleofMetaTegs);
@@ -91,8 +92,8 @@ export const useMetaTegs = (TitleofMetaTegs) => {
 
 ## NEXT-JS로 마이그레이션!
 
-- 찾아보니 _App.js에서 SEO처리를 함을 확인했습니다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생합니다. 
-이를 해결하기 위해 getStaticProps로 _App.js에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였.
+- 찾아보니 `_App.js`에서 SEO처리를 함을 확인했습니다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생합니다. 
+이를 해결하기 위해 getStaticProps로 `_App.js`에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였습니다.
 
 
 https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/ae59f31f19def246fd5295fa2af4376551803185/pages/_app.jsx#L3-L48
