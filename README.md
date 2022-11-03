@@ -55,14 +55,14 @@ $ npm run dev
 > 참고 폴더 [/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/main/context)
 >
 
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/helpers/useCarReducer.js#L1
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/ae59f31f19def246fd5295fa2af4376551803185/helpers/carReducer.js#L1-L16
 
 <br/>
 
 ### 3. Context API를 활용한 UI에 대한 정보와 데이터 
   - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로 가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
 
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/context/NavContext.js#L16
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/ae59f31f19def246fd5295fa2af4376551803185/context/NavContext.js#L1-L16
 
 <br/>
 
@@ -88,70 +88,17 @@ export const useMetaTegs = (TitleofMetaTegs) => {
 
 <br/>
 
-## NEXT-JS
-- Server Side Rendering, Automatic Routing, Automatic Code Splitting등의 장점을 가진 Next.js. 
-SEO 관련 사항 중 Open Graph를 구현하기위해 마이그레이션을 진행했습니다.
+## NEXT-JS로 마이그레이션!
+
 - 찾아보니 _App.js에서 SEO처리를 함을 확인했습니다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생합니다. 
 이를 해결하기 위해 getStaticProps로 _App.js에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였.
 
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/pages/detail/%5Bid%5D.jsx#L38
 
-```jsx
-// [id].jsx
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/ae59f31f19def246fd5295fa2af4376551803185/pages/_app.jsx#L3-L48
 
-export async function getStaticProps(context) {
-  const { params } = context;
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/ae59f31f19def246fd5295fa2af4376551803185/pages/detail/%5Bid%5D.jsx#L9-L53
 
-  const res = await fetch("https://preonboarding.platdev.net/api/cars", {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then((res) => res.json());
 
-  return {
-    props: res.payload.filter((e) => {
-      return e.id === Number(params.id);
-    })[0],
-  };
-}
-```
-
-https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/pages/_app.jsx#L14
-
-```jsx
-// _App.jsx
-function MyApp({ Component, pageProps }) {
-  const isEmptyObj = (obj) => {
-    if (obj.constructor === Object && Object.keys(obj).length === 0) {
-      return true;
-    }
-    return false;
-  };
-
-  return (
-    <>
-        { /* ... */ }
-        
-      {isEmptyObj(pageProps) ? (
-        <DefaultSeo {...DEFAULT_SEO} />
-      ) : (
-        <SEO data={pageProps} />
-      )}
-      
-        { /* ... */ }
-    </>
-  );
-}
-
-export default MyApp;
-```
 
 <br/>
 
