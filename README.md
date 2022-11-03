@@ -43,9 +43,10 @@ $ npm run dev
 ## ☑️ Best Practice 및 채택 근거
 
 ### 1. barrel 방식의 폴더구조
-- 각 컴포넌트에 해당되는 폴더를 만들고 그 안에 index.js를 만듭니다. index.js안에 `export { default } from './Component'` 라고 해두면 VS CODE상에서 해당 파일을 링크하여 열었을때 이름이 `Component.jsx` 라고 뜹니다. `index.jsx` 라는 이름보다 가독성이 좋습니다.
+- 각 컴포넌트에 해당되는 폴더를 만들고 그 안에 index.js를 만듭니다.
+예를 들어 index.js안에 `export { default } from './Header'` 라고 해두면 VS CODE상에서 해당 파일을 링크하여 열었을때(ctrl를 누른상태로 클릭) vs code 에디터 상단에 `Header.jsx` 라고 뜹니다. 이는 여러개의 파일을 link로 열었을때 `index.jsx` 라는 이름이 여러개가 떠서 헷갈리는 상황을 막아줍니다. 
 
-![header barrel](https://user-images.githubusercontent.com/65995664/199849583-813d467e-822f-465a-ac86-5b4d3e4c92cd.gif)
+![header barrel](https://user-images.githubusercontent.com/65995664/199855960-df2b2f70-3668-4777-8c57-4bedece6d857.gif)
 
 
 <br/>
