@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-import { CarContext } from "context/CarContext";
+import { CarContext } from 'context/CarContext';
 
-import Header from "components/Header";
-import CarDetail from "components/CarDetail";
+import Header from 'components/Header';
+import CarDetail from 'components/CarDetail';
 
 const Detail = () => {
   const router = useRouter();
@@ -31,23 +31,23 @@ export default Detail;
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const res = await fetch("https://preonboarding.platdev.net/api/cars", {
-    method: "GET",
+  const res = await fetch('https://preonboarding.platdev.net/api/cars', {
+    method: 'GET',
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
-  }).then((res) => res.json());
+  }).then(res => res.json());
 
   return {
-    props: res.payload.filter((e) => {
-      return e.id === Number(params.id);
+    props: res.payload.filter(car => {
+      return car.id === Number(params.id);
     })[0],
   };
 }
