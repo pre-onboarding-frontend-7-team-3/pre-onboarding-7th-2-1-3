@@ -5,10 +5,14 @@ import { CarContext } from 'context/CarContext';
 
 import Header from 'components/Header';
 import CarDetail from 'components/CarDetail';
+import { getCars } from 'api';
 
 const Detail = () => {
   const router = useRouter();
   const { id } = router.query;
+
+
+  
   const {
     carState: { carList, selectedCar },
     findCars,
@@ -37,17 +41,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
-
-  const res = await fetch('https://preonboarding.platdev.net/api/cars', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-    },
-  }).then(res => res.json());
+  const res = await getCars()
 
   return {
-    props: res.payload.filter(car => {
-      return car.id === Number(params.id);
-    })[0],
-  };
+    props: res.filter(car => {
+      return car.id === Number(params.id)
+    })[0]
+  }
 }
