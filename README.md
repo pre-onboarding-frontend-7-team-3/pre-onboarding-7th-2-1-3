@@ -62,7 +62,7 @@ $ npm run dev
 
 컴포넌트 단에서 여러 상태를 만들기 보다 컨포넌트 간 상태 공유가 가능하고 비동기 요청에 대한 과정과 결과 상태를 한 영역에서 관리할 수 있는 장점에 의견을 모았습니다. 
 
-더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context prodiver 컴포넌트로 로직을 분리해서 관리했습니다.
+더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context provider 컴포넌트로 로직을 분리해서 관리했습니다.
 
 > 참고 폴더 [/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/main/context)
 
@@ -120,7 +120,7 @@ https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blo
 
 <br/>
 
-### 6. 상수 데이터의 활용
+### 5. 상수 데이터의 활용
 live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 
 
 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/main/constants) 디렉토리에서 모두 관리 했습니다.
