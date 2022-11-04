@@ -11,8 +11,6 @@ const Detail = () => {
   const router = useRouter();
   const { id } = router.query;
 
-
-  
   const {
     carState: { carList, selectedCar },
     findCars,
@@ -42,7 +40,6 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const res = await getCars()
-
   return {
     props: res.filter(car => {
       return car.id === Number(params.id)
