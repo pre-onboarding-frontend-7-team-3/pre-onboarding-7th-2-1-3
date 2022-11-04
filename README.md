@@ -81,7 +81,7 @@ https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blo
 <br/>
 
 ### 4. next.js 마이그레이션
-## 순수 REACT
+#### - 순수 REACT
 SEO를 통한 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출하려 했습니다.
 
 그러나, 초기 순수 CRA환경에서는 벽을 맞이했었습니다. react-hook을 통한 og태그 관련 DOM조작과 react-snap 라이브러리를 통한 pre-render를 사용해보았는데요,
@@ -105,7 +105,7 @@ export const useMetaTegs = (TitleofMetaTegs) => {
 
 <br/>
 
-## NEXT-JS로 마이그레이션!
+#### - NEXT-JS로 마이그레이션!
 
 찾아보니 `_App.js`에서 SEO처리를 함을 확인했습니다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생합니다.
 
@@ -216,7 +216,7 @@ live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼�
 | <img src="https://avatars.githubusercontent.com/u/95282989?s=96&v=4" alt="Joeunji0119" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/65995664?s=96&v=4" alt="YeonghunKO" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/45018724?s=96&v=4" alt="PiperChang" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/55550034?s=96&v=4" alt="ono212" width="100" height="100"> |
 | [Joeunji0119](https://github.com/Joeunji0119)                                                                    | [YeonghunKO](https://github.com/YeonghunKO)                                                                     | [PiperChang](https://github.com/PiperChang)                                                                     | [ono212](https://github.com/ono212)                                                                         |
 
-| 문지원<br/>(팀원)                                                                                                | 이상민<br/>(팀원)                                                                                               | 이지원<br/>(팀원)                                                                                               | 조수진<br/>(팀원)                                                                                        |
+| 문지원<br/>(팀원)                                                                                                | 이상민<br/>(공지)                                                                                               | 이지원<br/>(팀원)                                                                                               | 조수진<br/>(팀원)                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/78708082?s=96&v=4" alt="moonkorea00" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/28257740?s=96&v=4" alt="dltkdals224" with="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/86206374?s=96&v=4" alt="365supprot" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/u/110365677?v=4" alt="suzz-in" width="100" height="100"> |
 | [moonkorea00](https://github.com/moonkorea00)                                                                    | [dltkdals224](https://github.com/dltkdals224)                                                                   | [365support](https://github.com/365support)                                                                     | [suzz-in](https://github.com/suzz-in)                                                                    |
