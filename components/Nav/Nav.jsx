@@ -1,6 +1,6 @@
 import { NavContext } from "context/NavContext";
 import { useContext, useEffect, useRef, useState } from "react";
-import { NAV_ITEM_DATA } from "./NavData";
+import { NAV_ITEM_DATA } from "../../constants/NavData";
 import NavItem from "./NavItem";
 
 import * as S from "./Nav.style";
