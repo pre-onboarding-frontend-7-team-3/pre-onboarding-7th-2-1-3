@@ -4,7 +4,7 @@
 >
 > 프로젝트 기간 : 2022년 11월 1일 ~ 2022년 11월 4일
 >
-> #### [배포링크](pre-onboarding-7th-2-1-3.vercel.app)
+> #### [배포링크](https://pre-onboarding-7th-2-1-3.vercel.app/)
 
 </br>
 
